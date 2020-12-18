@@ -61,8 +61,8 @@ Amplitude.init({
         "name": "00 - Intro",
         "artist": "Kevin",
         "album": "Zenika",
-        "url": "/medias/POD_ARK_00_Intro.mp3",
-        "cover_art_url": "/medias/zenika.png",
+        "url": "./medias/POD_ARK_00_Intro.mp3",
+        "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {
       			1: function(){
         			console.log( "1 second into the song" )
@@ -79,8 +79,8 @@ Amplitude.init({
         "name": "01 - Pourquoi l'agilité ?",
         "artist": "Kevin",
         "album": "Zenika",
-        "url": "/medias/POD_ARK_01_Pourquoi_L_Agilite.mp3",
-        "cover_art_url": "/medias/zenika.png",
+        "url": "./medias/POD_ARK_01_Pourquoi_L_Agilite.mp3",
+        "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {
       			1: function(){
         			console.log( "1 second into the song" )
@@ -94,7 +94,7 @@ Amplitude.init({
     		}
     }
   ],
-  "default_album_art": "/medias/zenika.png",
+  "default_album_art": "./medias/zenika.png",
 		 callbacks: {
       init: function(){
         console.log("init player")
