@@ -16,7 +16,7 @@ div#playerwrapper{
 div#content{
   min-width: 50%;
   max-width: 600px;
-  margin: 2% 4%;
+  padding: 2% 4%;
 }
 
 div#flat-black-player-container{
