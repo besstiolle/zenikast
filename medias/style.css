@@ -1,6 +1,28 @@
 /*
   1. Base
 */
+
+div#bodywrapper {
+  max-width: 1024px;
+  margin: auto;
+  background-color: #444;
+}
+div#playerwrapper{
+  position: relative;
+  min-width: 40%;
+  max-width: 400px;
+  display: inline-block;
+  vertical-align: top;
+
+}
+div#content{
+  position: relative;
+  min-width: 50%;
+  max-width: 600px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 2% 4%;
+}
 /*
   2. Components
 */
