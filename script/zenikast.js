@@ -4,8 +4,9 @@ const Amplitude = require('amplitudejs');
 import { UI } from './UI.class'
 
 var refresh = function(){
-  UI.run(Amplitude.getConfig()['active_metadata'])
+  UI.run(Amplitude.getConfig())
 }
+UI.processInitiatePlaylist(2)
 
 
 window.onkeydown = function(e) {
@@ -57,6 +58,7 @@ Amplitude.init({
         "name": "00 - Intro",
         "artist": "Kevin",
         "album": "Zenika",
+        "duration":"01:08",
         "url": "./medias/POD_ARK_00_Intro.mp3",
         "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {
@@ -75,6 +77,7 @@ Amplitude.init({
         "name": "01 - Pourquoi l'agilité ?",
         "artist": "Kevin",
         "album": "Zenika",
+        "duration":"16:23",
         "url": "./medias/POD_ARK_01_Pourquoi_L_Agilite.mp3",
         "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {

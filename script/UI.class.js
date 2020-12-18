@@ -2,13 +2,33 @@
 const asciidoctor = require('asciidoctor')()
 
 export class UI {
-  constructor(){
-   
-  }
 
   static run(config){
-    console.info(config);
-    UI.processLoadAsciidoc(config["url"])
+    UI.processLoadAsciidoc(config['active_metadata']["url"])
+  }
+
+  static processInitiatePlaylist(count){
+    let html=""
+    for (let pos=0; pos < count; pos++) {
+
+      html +=`<div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="${pos}">
+      <span class="song-number-now-playing">
+        <span class="number">${pos + 1}</span>
+        <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg"/>
+      </span>
+
+      <div class="song-meta-container">
+        <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="${pos}"></span>
+        <span class="song-artist-album"><span data-amplitude-song-info="artist" data-amplitude-song-index="${pos}"></span> - <span data-amplitude-song-info="album" data-amplitude-song-index="${pos}"></span></span>
+      </div>
+
+      <span class="song-duration">
+        <span data-amplitude-song-info="duration" data-amplitude-song-index="${pos}"></span>
+      <span>
+      </div>
+`  
+    } 
+    document.getElementById('list').innerHTML = html
   }
 
   static processLoadAsciidoc(url){
