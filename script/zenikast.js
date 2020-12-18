@@ -99,6 +99,3 @@ Amplitude.init({
      }
 });
 
-document.getElementsByClassName('test')[0].addEventListener('click', function(){
-  Amplitude.setSongPlayedPercentage(50)
-});

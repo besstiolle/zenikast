@@ -1,7 +1,10 @@
 
 const asciidoctor = require('asciidoctor')()
+const Amplitude = require('amplitudejs');
 
 export class UI {
+
+  static regex_timer_chapter = RegExp('^t\\d+$');
 
   static run(config){
     UI.processLoadAsciidoc(config['active_metadata']["url"])
@@ -35,5 +38,42 @@ export class UI {
     fetch(url.substring(0, url.length - 3) + "adoc")
     .then(response => response.text())
     .then((data) => { document.getElementById('content').innerHTML=asciidoctor.convert(data) })
+    .then(() => { UI.bind()})
+  }
+
+  static bind(){
+    //Bind clic for chapters
+    UI.bindByPattern('div.time > h2:first-of-type')
+    UI.bindByPattern('div.time > h3:first-of-type')
+  }
+
+  static bindByPattern(pattern){
+    //Bind clic for chapters
+    let elements = document.querySelectorAll(pattern)
+    let timer = ""
+    for (let i = 0; i < elements.length; i++){
+      elements[i].addEventListener('click', function(e){
+        //Not a real-time resolution of the timer.
+        timer = UI.getTimerOfChapter(this)
+        if(timer !== -1){Amplitude.skipTo( timer, Amplitude.getActiveIndex())}
+      })
+      // The real-time resolution.
+      timer = UI.getTimerOfChapter(elements[i])
+
+    }
+  }
+
+  static getTimerOfChapter(element){
+    let classNames = element.parentNode.className.split(' ')
+    for (let j = 0; j < classNames.length; j++){
+      if(UI.regex_timer_chapter.test(classNames[j])){
+        return classNames[j].substring(1)
+      }
+    }
+    return -1;
+  }
+
+  static hash(str){
+    return Array.from(str).reduce((hash, char) => 0 | (31 * hash + char.charCodeAt(0)), 0)
   }
 }
