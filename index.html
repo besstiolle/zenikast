@@ -10,7 +10,6 @@
     <!-- Include font -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i" rel="stylesheet">
     <link href="./medias/style.css" rel="stylesheet">
-    <script data-main="app" src="medias/lib/require.js"></script>
   </head>
   <body>
     <div id="flat-black-player-container">
@@ -259,47 +258,9 @@
         </div>
       </div>
     </div>
-    <div id="content"></div>
-            
-    <script>
-/*
-requirejs.config({
-    baseUrl: 'medias/lib',
-    paths: {
-        app: '../app'
-    }
-});
-
-//medias/script.js
-
-        requirejs(["medias/asciidoctor", "medias/amplitude.5.2.0.js", ""], function(asciidoctor, amplitude) {
-            //This function is called when scripts/helper/util.js is loaded.
-            //If util.js calls define(), then this function is not fired until
-            //util's dependencies have loaded, and the util argument will hold
-            //the module value for "helper/util".
-
-        
-        const content = 'http://asciidoctor.org[*Asciidoctor*] ' +
-        'running on https://opalrb.com[_Opal_] ' +
-        'brings AsciiDoc to Node.js!'
-        const html = asciidoctor.convert(content) // (2)
-        console.log(html) // (3)
-
-
-            console.info("asciidoctor loaded")
-            console.info(asciidoctor)
-            window.amplitude = amplitude
-        });
-
-
-*/
-    </script>
+    <div id="content">test content</div>
+    <script src="dist/main.js" ></script>
   </body>
 </html>
-
-<!--
-
-            -->
-
 
 
