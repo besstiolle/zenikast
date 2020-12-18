@@ -1,9 +1,7 @@
 ## Test Aciidoc de page d'info
 
 ++++
-<span class="amplitude-skip-to" data-amplitude-song-index="0" data-amplitude-location="30">Aller à 30s</span>
-<span class="amplitude-current-seconds"></span>
-<span class="amplitude-duration-time" data-amplitude-song-index="0"></span>
+<button class="test">click me</button>
 ++++
 
 http://asciidoctor.org[*Asciidoctor*] ' +

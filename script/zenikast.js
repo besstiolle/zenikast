@@ -82,7 +82,7 @@ Amplitude.init({
         "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {
       			1: function(){
-        			console.log( "1 second into the song" )
+              console.log( "1 second into the song" )
       			},
       			90: function(){
         			console.log( "1 minute 30 seconds into the song" );
@@ -97,4 +97,8 @@ Amplitude.init({
 		 callbacks: {
       loadstart: function(){refresh()}
      }
+});
+
+document.getElementsByClassName('test')[0].addEventListener('click', function(){
+  Amplitude.setSongPlayedPercentage(50)
 });
