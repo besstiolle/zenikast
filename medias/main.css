@@ -45,7 +45,7 @@ h2,h3 {
 
 div.time > h2:first-of-type,
 div.time > h3:first-of-type{
-  background: url("/medias/link.png") no-repeat left 50%;
+  background: url("../medias/link.png") no-repeat left 50%;
   background-size: 16px;
   cursor: pointer;
 }
