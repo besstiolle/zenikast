@@ -3,19 +3,49 @@ div#bodywrapper {
   margin: auto;
   background-color: #444;
 }
+div#content,
 div#playerwrapper{
   position: relative;
-  min-width: 40%;
-  max-width: 400px;
-  display: inline-block;
+  display:  table-cell;
   vertical-align: top;
 
 }
+div#playerwrapper{
+  width: 20%;
+}
 div#content{
-  position: relative;
   min-width: 50%;
   max-width: 600px;
-  display: inline-block;
-  vertical-align: top;
   margin: 2% 4%;
+}
+
+div#flat-black-player-container{
+  width: 340px;
+  margin-bottom: 20px !important;
+}
+div.player-header{
+  margin-top: 20px !important;
+}
+div#player-bottom div#volume-container img{
+  margin-top: 0px !important;
+}
+
+div.time{
+  background-color: #444;  
+}
+
+div.time_current{
+  border-left: 2px dotted #F0FFFF;
+  padding-left: 5px;
+}
+
+h2,h3 {
+  padding-left: 22px;
+}
+
+div.time > h2:first-of-type,
+div.time > h3:first-of-type{
+  background: url("/medias/link.png") no-repeat left 50%;
+  background-size: 16px;
+  cursor: pointer;
 }
