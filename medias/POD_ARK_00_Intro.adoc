@@ -1,0 +1,5 @@
+## Test Aciidoc de page d'info
+
+http://asciidoctor.org[*Asciidoctor*] ' +
+  'running on https://opalrb.com[_Opal_] ' +
+  'brings AsciiDoc to Node.js!
