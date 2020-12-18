@@ -1,16 +1,12 @@
 
-
-const asciidoctor = require('asciidoctor')()
-
-fetch('medias/POD_ARK_00_Intro.adoc')
-  .then(response => response.text())
-  .then((data) => { document.getElementById('content').innerHTML=asciidoctor.convert(data) })
-
-
-
-
-
 const Amplitude = require('amplitudejs');
+
+import { UI } from './UI.class'
+
+var refresh = function(){
+  UI.run(Amplitude.getConfig()['active_metadata'])
+}
+
 
 window.onkeydown = function(e) {
     return !(e.keyCode == 32);
@@ -96,26 +92,6 @@ Amplitude.init({
   ],
   "default_album_art": "./medias/zenika.png",
 		 callbacks: {
-      init: function(){
-        console.log("init player")
-      },next: function(){
-				 console.log("next audio")
-       }, 
-       prev: function(){
-        console.log("previous audio.")
-			 }, 
-       album_change: function(){
-        console.log("change album.")
-			 }
+      loadstart: function(){refresh()}
      }
-     /* 
-     stop	The active audio is stopped
-initialized	AmplitudeJS has finished initializing
-song_repeated	When the active audio has been repeated
-next	When the next audio has been played
-prev	When the prev audio has been played
-album_change	When the album has changed
-song_change	When the song has changed
-playlist_changed	When the playlist has changed.
-     */
 });

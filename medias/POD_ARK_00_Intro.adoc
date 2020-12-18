@@ -1,5 +1,11 @@
 ## Test Aciidoc de page d'info
 
+++++
+<span class="amplitude-skip-to" data-amplitude-song-index="0" data-amplitude-location="30">Aller à 30s</span>
+<span class="amplitude-current-seconds"></span>
+<span class="amplitude-duration-time" data-amplitude-song-index="0"></span>
+++++
+
 http://asciidoctor.org[*Asciidoctor*] ' +
   'running on https://opalrb.com[_Opal_] ' +
   'brings AsciiDoc to Node.js!
