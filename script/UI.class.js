@@ -1,3 +1,4 @@
+import { JsonLoader } from './JsonLoader.class';
 
 const asciidoctor = require('asciidoctor')()
 const Amplitude = require('amplitudejs');
@@ -35,10 +36,10 @@ export class UI {
   }
 
   static processLoadAsciidoc(url){
-    fetch(url.substring(0, url.length - 3) + "adoc")
-    .then(response => response.text())
-    .then((data) => { document.getElementById('content').innerHTML=asciidoctor.convert(data) })
-    .then(() => { UI.bind()})
+    //Retrieve from inner cache system
+    let data = JsonLoader.getAsciidoc(url.substring(0, url.length - 3) + "adoc")
+    document.getElementById('content').innerHTML = asciidoctor.convert(data)
+    UI.bind()
   }
 
   static bind(){
@@ -87,9 +88,4 @@ export class UI {
       elements[i].classList.add('time_current');
     }
   }
-
-  static hash(str){
-    return Array.from(str).reduce((hash, char) => 0 | (31 * hash + char.charCodeAt(0)), 0)
-  }
-
 }
