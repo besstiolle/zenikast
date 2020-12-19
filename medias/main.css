@@ -35,8 +35,7 @@ div.time{
 }
 
 div.time_current{
-  border-left: 2px dotted #F0FFFF;
-  padding-left: 5px;
+  background-color: #666;
 }
 
 h2,h3 {

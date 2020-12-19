@@ -63,13 +63,13 @@ Amplitude.init({
         "cover_art_url": "./medias/zenika.png",
     		"time_callbacks": {
       			1: function(){
-        			console.log( "1 second into the song" )
+              UI.time_callbacks(1)
       			},
-      			90: function(){
-        			console.log( "1 minute 30 seconds into the song" );
+      			5: function(){
+              UI.time_callbacks(5)
       			},
-      			110: function(){
-        			console.log( "1 minute 50 seconds into the song" );
+      			10: function(){
+              UI.time_callbacks(10)
       			}
     		}
     },

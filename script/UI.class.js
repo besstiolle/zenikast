@@ -72,8 +72,24 @@ export class UI {
     }
     return -1;
   }
+  
+  static time_callbacks(timer){
+    console.info("time_callbacks #" + timer + "s")
+    //Purge current class "time_current"
+    let elements = document.getElementsByClassName("time_current")
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('time_current');
+    }
+
+    //Add class time_current where it's needed
+    elements = document.getElementsByClassName("t"+timer)
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add('time_current');
+    }
+  }
 
   static hash(str){
     return Array.from(str).reduce((hash, char) => 0 | (31 * hash + char.charCodeAt(0)), 0)
   }
+
 }
