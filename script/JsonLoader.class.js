@@ -5,6 +5,7 @@ const DEFAULT_ARTIST = 'zenika'
 const DEFAULT_ALBUM = 'Animé par la passion'
 const DEFAULT_DURATION = '00:00'
 const DEFAULT_ALBUM_ART = './medias/zenika.png'
+const REGEX_tiMER_ADOC = /\.time\.t(\d+)/g
 
 export class JsonLoader {
 
@@ -30,8 +31,22 @@ export class JsonLoader {
 
     static initiateSongs(){
         let songs = []
+        let matchs = []
+        let hash 
+        let timers
+
         JsonLoader.json.forEach(entry => {
-            songs.push( new Song(entry))
+            hash = JsonLoader.hash(entry.url.substring(0, entry.url.length - 3) + "adoc")
+            timers = []
+            if(JsonLoader.templates.has(hash)){
+                matchs = JsonLoader.templates.get(hash).match(REGEX_tiMER_ADOC)
+                if(matchs != null){
+                    matchs.forEach(match => {
+                        timers.push(match.substring(7))
+                    });
+                }
+            }
+            songs.push( new Song(entry, timers))
         })
         return songs
     }
@@ -59,23 +74,21 @@ export class JsonLoader {
 
 }
 class Song{
-    constructor(entry){
+    constructor(entry, timers){
         this.name = entry.name
         this.artist = entry.artist ? entry.artist : DEFAULT_ARTIST,
         this.album = entry.album ? entry.album : DEFAULT_ALBUM,
         this.duration = entry.duration ? entry.duration : DEFAULT_DURATION,
         this.url = entry.url,
         this.cover_art_url = entry.cover_art_url ? entry.cover_art_url : DEFAULT_ALBUM_ART,
-        this.time_callbacks = {
-            1: function(){
-                UI.time_callbacks(1)
-            },
-            5: function(){
-                UI.time_callbacks(5)
-            },
-            10: function(){
-                UI.time_callbacks(10)
-            }
-        }
+        this.time_callbacks = this._initTimeCallbacks(timers)
+    }
+
+    _initTimeCallbacks(timers){
+        let callbacks = {}
+        timers.forEach(timer => {
+            callbacks[timer] = function(){UI.time_callbacks(timer)}
+        })
+        return callbacks
     }
 }
