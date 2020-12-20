@@ -4,7 +4,7 @@ import { UI } from './UI.class'
 const DEFAULT_ARTIST = 'zenika'
 const DEFAULT_ALBUM = 'Animé par la passion'
 const DEFAULT_DURATION = '00:00'
-const DEFAULT_ALBUM_ART = './medias/zenika.png'
+const DEFAULT_ALBUM_ART = './assets/zenika.png'
 const REGEX_tiMER_ADOC = /\.time\.t(\d+)/g
 
 export class JsonLoader {
