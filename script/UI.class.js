@@ -9,6 +9,7 @@ export class UI {
 
   static run(config){
     UI.processLoadAsciidoc(config['active_metadata']["url"])
+    UI.processLoadPdf(config['active_metadata']["url"])
   }
 
   static processInitiatePlaylist(count){
@@ -35,9 +36,9 @@ export class UI {
     document.getElementById('list').innerHTML = html
   }
 
-  static processLoadAsciidoc(url){
+  static processLoadAsciidoc(urlSong){
     //Retrieve from inner cache system
-    let data = JsonLoader.getAsciidoc(url.substring(0, url.length - 3) + "adoc")
+    let data = JsonLoader.getAsciidoc(urlSong.substring(0, urlSong.length - 3) + "adoc")
     document.getElementById('content').innerHTML = asciidoctor.convert(data)
     UI.bind()
   }
@@ -88,4 +89,31 @@ export class UI {
       elements[i].classList.add('time_current');
     }
   }
+
+  static processLoadPdf(urlSong){    
+    //Clear current pdf frame
+    document.getElementById('pdf').innerHTML = ''
+    document.getElementById('pdf').classList.add('hidden')
+
+    let url = urlSong.substring(0, urlSong.length - 3) + "pdf"
+    let xhr = new XMLHttpRequest();
+    let regex_http = /[2-3]\d\d/; // http code 2xx & 3xx are accepted as "the file exist"
+    xhr.open('GET', url);
+    xhr.send();
+    xhr.onload = function() {
+
+      //If the pdf exist, update the html object 
+      if ((xhr.status+"").match(regex_http)) {
+        let html = `<object data="${url}" type="application/pdf" width="100%" height="100%">
+            <iframe src="${url}" style="border: none;" width="100%" height="100%">
+              This browser does not support PDFs. Please download the PDF to view it: <a href="${url}">Download PDF</a>
+            </iframe>
+          </object>`
+          document.getElementById('pdf').innerHTML = html
+          document.getElementById('pdf').classList.remove('hidden')
+      }
+    };
+  }
+
+  static 
 }
