@@ -6,7 +6,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const hash = urlParams.get('hash');
 console.info("test hash : " + hash)
 
-JsonLoader.loadJson("./medias/playlist1.json").then( promises => {
+JsonLoader.loadJson("./medias/playlist_sample.json").then( promises => {
   Promise.all(promises).then( () => 
     JsonLoader.initiateSongs()
   ).then(songs => {

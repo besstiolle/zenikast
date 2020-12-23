@@ -69,10 +69,6 @@ div.time_current > h3:first-of-type{
   box-shadow: 6px 6px #B31835;
 }
 
-div.paragraph{
-  padding-left: 20px;
-}
-
 div#pdf{
   width: 90%;
   height: 550px;
@@ -81,4 +77,24 @@ div#pdf{
 
 div.hidden{
   display: none;
+}
+
+div.paragraph{
+  padding-left: 20px;
+}
+
+pre, code{
+  background: #404040;
+  color: #111;
+  padding: 2px 5px;
+}
+pre{
+  padding: 20px;
+  border: 1px dotted #555;
+}
+
+a, a:visited, a:hover{
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
 }
