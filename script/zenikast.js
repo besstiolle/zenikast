@@ -2,6 +2,9 @@ import { UI } from './UI.class'
 import { AmplitudeWrapper } from './AmplitudeWrapper.class'
 import { JsonLoader } from './JsonLoader.class'
 
+const urlParams = new URLSearchParams(window.location.search);
+const hash = urlParams.get('hash');
+console.info("test hash : " + hash)
 
 JsonLoader.loadJson("./medias/playlist1.json").then( promises => {
   Promise.all(promises).then( () => 
