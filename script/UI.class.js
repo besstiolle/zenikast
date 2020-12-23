@@ -98,7 +98,7 @@ export class UI {
     let url = urlSong.substring(0, urlSong.length - 3) + "pdf"
     let xhr = new XMLHttpRequest();
     let regex_http = /[2-3]\d\d/; // http code 2xx & 3xx are accepted as "the file exist"
-    xhr.open('GET', url);
+    xhr.open('HEAD', url);
     xhr.send();
     xhr.onload = function() {
 
