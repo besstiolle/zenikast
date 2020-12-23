@@ -1,5 +1,5 @@
 
-import { UI } from 'UI.class'
+import { UI } from './UI.class'
 
 const DEFAULT_ARTIST = 'zenika'
 const DEFAULT_ALBUM = 'Animé par la passion'
