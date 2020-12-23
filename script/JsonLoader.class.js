@@ -21,7 +21,7 @@ export class JsonLoader {
                 .then( json => { 
                     JsonLoader.json = json
                     //pre-load adoc & put it in cache
-                    JsonLoader.json.forEach(entry => {
+                    JsonLoader.json.podcast_tracks.forEach(entry => {
                         promises.push(JsonLoader.loadAsciidoc(entry.url.substring(0, entry.url.length - 3) + "adoc"))
                     })
                     resolve(promises)
@@ -35,7 +35,7 @@ export class JsonLoader {
         let hash 
         let timers
 
-        JsonLoader.json.forEach(entry => {
+        JsonLoader.json.podcast_tracks.forEach(entry => {
             hash = JsonLoader.hash(entry.url.substring(0, entry.url.length - 3) + "adoc")
             timers = []
             if(JsonLoader.templates.has(hash)){

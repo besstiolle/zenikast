@@ -8,8 +8,14 @@ export class UI {
   static regex_timer_chapter = RegExp('^t\\d+$');
 
   static run(config){
+    UI.processSetTitle()
     UI.processLoadAsciidoc(config['active_metadata']["url"])
     UI.processLoadPdf(config['active_metadata']["url"])
+  }
+
+  static processSetTitle(){
+    document.getElementById('header_h1').innerHTML = JsonLoader.json.podcast_title
+    document.title = JsonLoader.json.podcast_title
   }
 
   static processInitiatePlaylist(count){

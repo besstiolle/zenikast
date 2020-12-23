@@ -19,6 +19,24 @@ div#content{
   padding: 20px 20px;
 }
 
+h1#header_h1{
+  padding: 20px 60px 20px 80px;
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-left: -20px;
+  color: #B31835;
+  box-shadow: 6px 6px #B31835;
+}
+
+h2, h3{
+  padding: 20px 60px 20px 80px;
+  background-color: #FFFFFF;
+  color: #B31835;
+  margin-right: -40px;
+  padding-left: 45px;
+}
+
+
 div#flat-black-player-container{
   width: 340px;
   margin-bottom: 20px !important;
@@ -38,15 +56,21 @@ div.time_current{
   background-color: #666;
 }
 
-h2,h3 {
-  padding-left: 22px;
-}
-
 div.time > h2:first-of-type,
 div.time > h3:first-of-type{
-  background: url("../assets/link.png") no-repeat left 50%;
-  background-size: 16px;
+  background-image: url(../assets/link.png);
+  background-position: 7px 50%;
+  background-repeat: no-repeat;
+  background-size: 32px;
   cursor: pointer;
+}
+div.time_current > h2:first-of-type,
+div.time_current > h3:first-of-type{
+  box-shadow: 6px 6px #B31835;
+}
+
+div.paragraph{
+  padding-left: 20px;
 }
 
 div#pdf{
