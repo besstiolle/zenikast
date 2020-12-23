@@ -1,6 +1,6 @@
-import { UI } from './UI.class'
-import { AmplitudeWrapper } from './AmplitudeWrapper.class'
-import { JsonLoader } from './JsonLoader.class'
+import { UI } from 'UI.class'
+import { AmplitudeWrapper } from 'AmplitudeWrapper.class'
+import { JsonLoader } from 'JsonLoader.class'
 
 
 JsonLoader.loadJson("./medias/playlist1.json").then( promises => {

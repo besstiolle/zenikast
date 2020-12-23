@@ -1,4 +1,4 @@
-import { UI } from './UI.class'
+import { UI } from 'UI.class'
 const Amplitude = require('amplitudejs');
 
 export class AmplitudeWrapper {

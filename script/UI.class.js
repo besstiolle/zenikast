@@ -1,4 +1,4 @@
-import { JsonLoader } from './JsonLoader.class';
+import { JsonLoader } from 'JsonLoader.class';
 
 const asciidoctor = require('asciidoctor')()
 const Amplitude = require('amplitudejs');
