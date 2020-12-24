@@ -1,27 +1,34 @@
 
 import { UI } from './UI.class'
 
-const DEFAULT_ARTIST = 'zenika'
-const DEFAULT_ALBUM = 'Animé par la passion'
-const DEFAULT_DURATION = '00:00'
-const DEFAULT_ALBUM_ART = './assets/zenika.png'
-const REGEX_tiMER_ADOC = /\.time\.t(\d+)/g
-
 export class JsonLoader {
 
     static templates = new Map()
-    static json = ""
+    static jsonPodcast = ""
+    static jsonPlaylist = ""
 
-    static loadJson(json_url){
+    static loadJsonPlaylists(json_url){
+        return new Promise((resolve) => {
+            fetch(json_url)
+                .then(response => response.json())
+                .then( jsonPlaylist => { 
+                    JsonLoader.jsonPlaylist = jsonPlaylist
+                    //pre-load adoc & put it in cache
+                    resolve()
+                })
+        })
+    }
+
+    static loadJsonPodcast(json_url){
         let promises = []
 
         return new Promise((resolve) => {
             fetch(json_url)
                 .then(response => response.json())
-                .then( json => { 
-                    JsonLoader.json = json
+                .then( jsonPodcast => { 
+                    JsonLoader.jsonPodcast = jsonPodcast
                     //pre-load adoc & put it in cache
-                    JsonLoader.json.podcast_tracks.forEach(entry => {
+                    JsonLoader.jsonPodcast.podcast_tracks.forEach(entry => {
                         promises.push(JsonLoader.loadAsciidoc(entry.url.substring(0, entry.url.length - 3) + "adoc"))
                     })
                     resolve(promises)
@@ -35,11 +42,11 @@ export class JsonLoader {
         let hash 
         let timers
 
-        JsonLoader.json.podcast_tracks.forEach(entry => {
+        JsonLoader.jsonPodcast.podcast_tracks.forEach(entry => {
             hash = JsonLoader.hash(entry.url.substring(0, entry.url.length - 3) + "adoc")
             timers = []
             if(JsonLoader.templates.has(hash)){
-                matchs = JsonLoader.templates.get(hash).match(REGEX_tiMER_ADOC)
+                matchs = JsonLoader.templates.get(hash).match(REGEX_TIMER_ADOC)
                 if(matchs != null){
                     matchs.forEach(match => {
                         timers.push(match.substring(7))
@@ -70,6 +77,12 @@ export class JsonLoader {
   
     static hash(str){
         return Array.from(str).reduce((hash, char) => 0 | (31 * hash + char.charCodeAt(0)), 0)
+    }
+
+    static uuidMinimal() {
+        return ([1e4]+"").replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
     }
 
 }

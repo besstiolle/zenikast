@@ -14,8 +14,8 @@ export class UI {
   }
 
   static processSetTitle(){
-    document.getElementById('header_h1').innerHTML = JsonLoader.json.podcast_title
-    document.title = JsonLoader.json.podcast_title
+    document.getElementById('header_h1').innerHTML = JsonLoader.jsonPodcast.podcast_title
+    document.title = JsonLoader.jsonPodcast.podcast_title
   }
 
   static processInitiatePlaylist(count){
@@ -104,7 +104,7 @@ export class UI {
     let url = urlSong.substring(0, urlSong.length - 3) + "pdf"
     let xhr = new XMLHttpRequest();
     let regex_http = /[2-3]\d\d/; // http code 2xx & 3xx are accepted as "the file exist"
-    xhr.open('HEAD', url);
+    xhr.open(DOES_EXISTS_HTTP_WORD, url);
     xhr.send();
     xhr.onload = function() {
 
@@ -120,6 +120,4 @@ export class UI {
       }
     };
   }
-
-  static 
 }
