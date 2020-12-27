@@ -2,6 +2,7 @@ div#bodywrapper {
   max-width: 1024px;
   margin: auto;
   background-color: #444;
+  position: relative;
 }
 div#content,
 div#playerwrapper{
@@ -76,7 +77,7 @@ div#pdf{
 }
 
 div.hidden{
-  display: none;
+  display: none !important;
 }
 
 div.paragraph{
@@ -97,4 +98,53 @@ a, a:visited, a:hover{
   color: #000;
   text-decoration: none;
   border-bottom: 1px solid #333;
+}
+/**/
+#hash{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  text-align: center;
+  border: 1px dotted;
+  color:#333;
+}
+/**/
+.podcast_box{
+  width: 33%;
+  display: inline-block;
+}
+.podcast{
+  width: 250px;
+  height: 250px;
+  margin: 30px auto;
+  position: relative;
+}
+.podcast_title{
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  display: block;
+  background-color: #444;
+  line-height: 2.5em;
+  opacity: 0.9;
+  width: 230px;
+  padding-left: 20px;
+  font-size: 1.3em;
+}
+.podcast_link{
+  border: none;
+}
+.podcast_cover_art{
+  width: 250px;
+  height: 250px;
+
+}
+.podcast:hover{
+  box-shadow: 6px 6px #B31835;
+}
+
+.podcast:hover .podcast_title{
+  color:#B31835;
+  opacity: 0.95;
 }

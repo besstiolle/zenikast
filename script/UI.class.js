@@ -44,15 +44,13 @@ export class UI {
 
   static processLoadAsciidoc(urlSong){
     //Retrieve from inner cache system
-    let data = JsonLoader.getAsciidoc(urlSong.substring(0, urlSong.length - 3) + "adoc")
-    document.getElementById('content').innerHTML = asciidoctor.convert(data)
-    UI.bind()
-  }
-
-  static bind(){
-    //Bind clic for chapters
-    UI.bindByPattern('div.time > h2:first-of-type')
-    UI.bindByPattern('div.time > h3:first-of-type')
+    JsonLoader.getAsciidoc(urlSong.substring(0, urlSong.length - 3) + "adoc").then((data)=>{
+      document.getElementById('content').innerHTML = asciidoctor.convert(data)
+  
+      //Bind clic for chapters
+      UI.bindByPattern('div.time > h2:first-of-type')
+      UI.bindByPattern('div.time > h3:first-of-type')
+    })
   }
 
   static bindByPattern(pattern){
@@ -60,14 +58,13 @@ export class UI {
     let elements = document.querySelectorAll(pattern)
     let timer = ""
     for (let i = 0; i < elements.length; i++){
-      elements[i].addEventListener('click', function(e){
+        elements[i].addEventListener('click', function(e){
         //Not a real-time resolution of the timer.
         timer = UI.getTimerOfChapter(this)
         if(timer !== -1){Amplitude.skipTo( timer, Amplitude.getActiveIndex())}
       })
       // The real-time resolution.
       timer = UI.getTimerOfChapter(elements[i])
-
     }
   }
 
@@ -81,6 +78,7 @@ export class UI {
     return -1;
   }
   
+  /** Move it after into JsonLoader ? */
   static time_callbacks(timer){
     console.info("time_callbacks #" + timer + "s")
     //Purge current class "time_current"
@@ -119,5 +117,31 @@ export class UI {
           document.getElementById('pdf').classList.remove('hidden')
       }
     };
+  }
+
+  static displayHash(){
+    document.getElementById('hash').innerHTML = "hash : " + JsonLoader.uuidMinimal()
+  }
+
+  static listPodcasts(promise){
+
+    promise.then(() =>{
+        let html=''
+        JsonLoader.jsonPlaylist.forEach(playlist => {
+
+          html += `<div class="podcast_box">
+          <div class="podcast">
+            <a href='index.html?podcast=${playlist.key}&title=${encodeURI(playlist.meta.podcast_title)}' class='podcast_link' alt='${playlist.meta.podcast_title}'>
+              <img src='${playlist.meta.cover_art_url}'alt="alt title" class="podcast_cover_art"/>
+              <span class='podcast_title'>${playlist.meta.podcast_title}</span>
+            </a>
+          </div>
+        </div>`
+        })
+        
+        document.getElementById('podcasts').innerHTML = html
+      
+      })
+    
   }
 }

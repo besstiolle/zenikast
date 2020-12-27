@@ -6,6 +6,7 @@ export class JsonLoader {
     static templates = new Map()
     static jsonPodcast = ""
     static jsonPlaylist = ""
+    static cache = new Map()
 
     static loadJsonPlaylists(json_url){
         return new Promise((resolve) => {
@@ -13,7 +14,6 @@ export class JsonLoader {
                 .then(response => response.json())
                 .then( jsonPlaylist => { 
                     JsonLoader.jsonPlaylist = jsonPlaylist
-                    //pre-load adoc & put it in cache
                     resolve()
                 })
         })
@@ -29,7 +29,7 @@ export class JsonLoader {
                     JsonLoader.jsonPodcast = jsonPodcast
                     //pre-load adoc & put it in cache
                     JsonLoader.jsonPodcast.podcast_tracks.forEach(entry => {
-                        promises.push(JsonLoader.loadAsciidoc(entry.url.substring(0, entry.url.length - 3) + "adoc"))
+                        promises.push(JsonLoader.getAsciidoc(entry.url.substring(0, entry.url.length - 3) + "adoc"))
                     })
                     resolve(promises)
                 })
@@ -60,19 +60,54 @@ export class JsonLoader {
 
     static getAsciidoc(url){
         let hash = JsonLoader.hash(url)
-        
         if(JsonLoader.templates.has(hash)) {
-            return JsonLoader.templates.get(hash)
-        }
-        JsonLoader.loadAsciidoc(url).then( () => JsonLoader.getAsciidoc(url))
+            return new Promise((resolve) => {resolve(JsonLoader.templates.get(hash))})
+        } 
+
+        return new Promise((resolve) => {
+            fetch(url)
+              .then(response => response.text())
+              .then(data => {
+                  JsonLoader.templates.set(hash, data)
+                  resolve(JsonLoader.templates.get(hash))}
+                )
+        })
     }
-    
-    static loadAsciidoc(url){
-        let hash = JsonLoader.hash(url)
+
+    static getPlaylistPopulated(){
+        let urls = []
+        JsonLoader.jsonPlaylist.forEach(playlist => {
+            urls.push(playlist['url'])
+        });
+
+        return new Promise((resolve) => {
+            //Preload Json, put result in cache then ...
+            Promise.all(JsonLoader.preFetchJson(urls)).then(() => {
+                for(let i = 0; i < JsonLoader.jsonPlaylist.length; i++){
+                    JsonLoader.jsonPlaylist[i]['meta'] = JsonLoader.cache.get(JsonLoader.hash(JsonLoader.jsonPlaylist[i]['url']))
+                }
+                resolve()
+            })
+        })
+    }
+
+    static preFetchJson(urls){
+        let promises = []
+        urls.forEach(url => {
+            //TODO: check cache
+            promises.push(
+                new Promise((resolve) => {
+                    fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        JsonLoader.cache.set(JsonLoader.hash(url), data)
+                        resolve()
+                    })
+                })
+            )  
+        })
         
-        return fetch(url)
-        .then(response => response.text())
-        .then(data => JsonLoader.templates.set(hash, data))
+        return promises
     }
   
     static hash(str){
