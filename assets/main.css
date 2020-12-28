@@ -93,12 +93,16 @@ pre{
   padding: 20px;
   border: 1px dotted #555;
 }
+a, 
+a:visited, 
+a:hover{
+  color: #000;
+  text-decoration: none;
+}
 
 div#content a, 
 div#content a:visited, 
 div#content a:hover{
-  color: #000;
-  text-decoration: none;
   border-bottom: 1px solid #333;
 }
 /**/
