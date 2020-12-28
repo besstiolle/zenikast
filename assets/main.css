@@ -37,6 +37,20 @@ h2, h3{
   padding-left: 45px;
 }
 
+a, 
+a:visited, 
+a:hover{
+  color: #000;
+  text-decoration: none;
+}
+
+a.header_h1_back{
+  color: #B31835;
+  position: absolute;
+  font-size: 3.7em;
+  top: 20px;
+  left: 10px;
+}
 
 div#flat-black-player-container{
   width: 340px;
@@ -76,7 +90,7 @@ div#pdf{
   margin: 20px auto;
 }
 
-div.hidden{
+.hidden{
   display: none !important;
 }
 
@@ -92,12 +106,6 @@ pre, code{
 pre{
   padding: 20px;
   border: 1px dotted #555;
-}
-a, 
-a:visited, 
-a:hover{
-  color: #000;
-  text-decoration: none;
 }
 
 div#content a, 

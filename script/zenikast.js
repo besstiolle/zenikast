@@ -24,6 +24,7 @@ JsonLoader.loadJsonPlaylists(PLAYLIST_URL).then( promise => {
           .then( () => JsonLoader.initiateSongs())
           .then(songs => {
               document.getElementById('playerwrapper').classList.remove('hidden')
+              document.getElementById('header_h1_back').classList.remove('hidden')
               // Setup the exact number of entries for the visual playlist
               UI.processInitiatePlaylist(songs.length)
               // Bind the Amplitude player's buttons with the UI
