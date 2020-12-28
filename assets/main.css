@@ -94,7 +94,9 @@ pre{
   border: 1px dotted #555;
 }
 
-a, a:visited, a:hover{
+div#content a, 
+div#content a:visited, 
+div#content a:hover{
   color: #000;
   text-decoration: none;
   border-bottom: 1px solid #333;
@@ -123,13 +125,12 @@ a, a:visited, a:hover{
 .podcast_title{
   position: absolute;
   bottom: 0;
-  height: 50px;
   display: block;
   background-color: #444;
-  line-height: 2.5em;
+  line-height: 1.3em;
   opacity: 0.9;
   width: 230px;
-  padding-left: 20px;
+  padding: 20px 0 20px 20px;
   font-size: 1.3em;
 }
 .podcast_link{
