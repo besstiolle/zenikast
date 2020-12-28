@@ -5,6 +5,12 @@
   status = 200
   force = true
 
+  from = "/zenika"
+  to = "https://focused-hugle-9089b2.netlify.app"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
 [[headers]]
   for = "/*"
   [headers.values]
