@@ -1,5 +1,9 @@
 name: build-github-actions
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
