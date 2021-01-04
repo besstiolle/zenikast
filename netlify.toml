@@ -1,0 +1,6 @@
+# Redirect uri /pod/a1b2c3-My-Podcast to /index.html?podcast=:hash
+[[redirects]]
+  from = "/pod/:hash-:str"
+  to = "/index.html?podcast=:hash&title=:str"
+  status = 200
+  force = true

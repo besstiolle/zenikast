@@ -1,0 +1,16 @@
+{
+    "podcast_title": "Mon Podcast",
+    "cover_art_url": "./medias/02-Aerocity-Stranger/lions.jpg",
+    "podcast_tracks": [
+        {
+            "name": "01 - Guaz",
+            "url":"./medias/01-Guaz/Guaz-Guaz-01Guaz.mp3",
+            "duration":"00:36"
+        }, {
+            "name": "02 - Aerocity-Stranger",
+            "url":"./medias/02-Aerocity-Stranger/Aerocity-Stranger.mp3",
+            "duration":"00:34",
+            "cover_art_url":"./medias/02-Aerocity-Stranger/lions2.jpg"
+        }
+    ]
+}

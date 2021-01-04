@@ -1,0 +1,163 @@
+div#bodywrapper {
+  max-width: 1024px;
+  margin: auto;
+  background-color: #444;
+  position: relative;
+}
+div#content,
+div#playerwrapper{
+  position: relative;
+  display:  table-cell;
+  vertical-align: top;
+
+}
+div#playerwrapper{
+  width: 20%;
+}
+div#content{
+  min-width: 50%;
+  max-width: 600px;
+  padding: 20px 20px;
+}
+
+h1#header_h1{
+  padding: 20px 60px 20px 80px;
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-left: -20px;
+  color: #B31835;
+  box-shadow: 6px 6px #B31835;
+}
+
+h2, h3{
+  padding: 20px 60px 20px 80px;
+  background-color: #FFFFFF;
+  color: #B31835;
+  margin-right: -40px;
+  padding-left: 45px;
+}
+
+a, 
+a:visited, 
+a:hover{
+  color: #000;
+  text-decoration: none;
+}
+
+a.header_h1_back{
+  color: #B31835;
+  position: absolute;
+  font-size: 3.7em;
+  top: 20px;
+  left: 10px;
+}
+
+div#flat-black-player-container{
+  width: 340px;
+  margin-bottom: 20px !important;
+}
+div.player-header{
+  margin-top: 20px !important;
+}
+div#player-bottom div#volume-container img{
+  margin-top: 0px !important;
+}
+
+div.time{
+  background-color: #444;  
+}
+
+div.time_current{
+  background-color: #666;
+}
+
+div.time > h2:first-of-type,
+div.time > h3:first-of-type{
+  background-image: url(../assets/link.png);
+  background-position: 7px 50%;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  cursor: pointer;
+}
+div.time_current > h2:first-of-type,
+div.time_current > h3:first-of-type{
+  box-shadow: 6px 6px #B31835;
+}
+
+div#pdf{
+  width: 90%;
+  height: 550px;
+  margin: 20px auto;
+}
+
+.hidden{
+  display: none !important;
+}
+
+div.paragraph{
+  padding-left: 20px;
+}
+
+pre, code{
+  background: #404040;
+  color: #111;
+  padding: 2px 5px;
+}
+pre{
+  padding: 20px;
+  border: 1px dotted #555;
+}
+
+div#content a, 
+div#content a:visited, 
+div#content a:hover{
+  border-bottom: 1px solid #333;
+}
+/**/
+#hash{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  text-align: center;
+  border: 1px dotted;
+  color:#333;
+}
+/**/
+.podcast_box{
+  width: 33%;
+  display: inline-block;
+}
+.podcast{
+  width: 250px;
+  height: 250px;
+  margin: 30px auto;
+  position: relative;
+}
+.podcast_title{
+  position: absolute;
+  bottom: 0;
+  display: block;
+  background-color: #444;
+  line-height: 1.3em;
+  opacity: 0.9;
+  width: 230px;
+  padding: 20px 0 20px 20px;
+  font-size: 1.3em;
+}
+.podcast_link{
+  border: none;
+}
+.podcast_cover_art{
+  width: 250px;
+  height: 250px;
+
+}
+.podcast:hover{
+  box-shadow: 6px 6px #B31835;
+}
+
+.podcast:hover .podcast_title{
+  color:#B31835;
+  opacity: 0.95;
+}

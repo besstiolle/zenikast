@@ -1,0 +1,62 @@
+[.time.t1]
+## Préambule
+
+Ce podcast est propulsé par Zenicast, Retrouvez toute la documentation sur le https://github.com/besstiolle/zenikast[site github de Zenicast] et n'hésitez pas à proposer vos propres idées.
+
+[.time.t5]
+## Comment ça marche
+
+C'est relativement simple. Chaque playlist est définit par un fichier de configuration json relativement minimaliste qui est complété par une convention de nommage.
+
+[.time.t8]
+### Le fichier de configuration minimal
+
+Créez un fichier json et insérez y le contenu ci dessous.
+
+```
+{
+    "podcast_tracks": [
+        {
+            "name": "Le titre de ma chanson",
+            "url":"mon/url/vers/le.mp3",
+            "duration":"00:36"
+        }
+    ]
+}
+```
+
+Vous voici avec une playlist d'une seule et unique musique. Le sytème chargera alors le fichier .adoc associé par nommenclature : `mon/autre/url/vers/le.adoc` ainsi que `mon/autre/url/vers/le.pdf` Le fichier .adoc est obligatoire, le .pdf facultatif.
+
+[.time.t15]
+### Les propriétés étendues du fichier de configuration
+
+https://zenicast.me/medias/playlist_sample.json[Voir un exemple complet]
+
+De nombreuses options permettent de surcharger le comportement par défault de l'application
+
+A la racine du json
+
+ * **podcast_title** Le titre de la page rendu dans la balise `<h1/>` et `<title/>` de la page web
+ * **cover_art_url** (Non implémenté) l'url vers l'image ratio 1:1 de taille 340px / 340px représentant la playlist. Par défaut sa valeur est égale à `./assets/zenika.png` (https://zenicast.me/assets/zenika.png[voir])
+ * **json podcast_tracks** Cette entrée est un tableau de tracks et peut contenir autant de piste audio que nécessaire.
+
+L'objet Tracks
+
+ * **name**: **[Mandatory]** le nom long de la piste audio
+ * **url** : **[Mandatory]** l'url de la piste audio
+ * **artist** : Le nom de l'artiste de la piste audio. Egal à `${DEFAULT_ARTIST}` si vide
+ * **album** : Le nom de l'album de la piste audio. Egal à `${DEFAULT_ALBUM}` si vide
+ * **duration** : La durée de la piste audio. Egal à `${DEFAULT_DURATION}` si vide. le format recommandé est 00:00 minutes:secondes de préférence mais le format reste libre.
+ * **cover_art_url** : l'url vers l'image ratio 1:1 de taille 340px / 340px représentant la piste audio. Egal à `${DEFAULT_ALBUM_ART}` si vide
+
+[.time.t20]
+### Les Valeurs par défaut
+
+ * ${DEFAULT_ARTIST} : à pour valeur la chaine de caractère : `zenika`
+ * ${DEFAULT_ALBUM} : à pour valeur la chaine de caractère : `Animé par la passion`
+ * ${DEFAULT_DURATION} : à pour valeur la chaine de caractère : `00:00`
+ * ${DEFAULT_ALBUM_ART} : à pour valeur la chaine de caractère : `./assets/zenika.png`
+
+## Le fichier adoc 
+
+Retrouvez l'explication du fonctionnement du fichier asciidoc dans la suite de ce podcast.

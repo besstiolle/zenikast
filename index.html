@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zenicast</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" class="next-head"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" class="next-head"/>
+
+    <!-- Include font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i" rel="stylesheet">
+    <link href="./assets/main.css" rel="stylesheet">
+    <link href="./assets/amplitude.css" rel="stylesheet">
+    <!--TODO : base href="mywebsite.com/path"-->
+  </head>
+  <body>
+
+    <div id="bodywrapper">
+      <div id='header'><h1 id='header_h1'>Zenicast</h1><a id='header_h1_back' href='index.html' class='hidden header_h1_back'>&lt;</a></div>
+      <div id="playerwrapper" class="hidden">
+        <div id="flat-black-player-container">
+            <div id="list-screen" class="slide-in-top">
+            <div id="list-screen-header" class="hide-playlist">
+                <img id="up-arrow" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/up.svg"/>
+                Hide Playlist
+            </div>
+
+            <div id="list"> </div>
+
+            <div id="list-screen-footer">
+                <div id="list-screen-meta-container">
+                <span data-amplitude-song-info="name" class="song-name"></span>
+
+                <div class="song-artist-album">
+                    <span data-amplitude-song-info="artist"></span>
+                </div>
+                </div>
+                <div class="list-controls">
+                <div class="list-previous amplitude-prev"></div>
+                <div class="list-play-pause amplitude-play-pause"></div>
+                <div class="list-next amplitude-next"></div>
+                </div>
+            </div>
+            </div>
+            <div id="player-screen">
+            <div class="player-header down-header">
+                <img id="down" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/down.svg"/>
+                Show Playlist
+            </div>
+            <div id="player-top">
+                <img data-amplitude-song-info="cover_art_url"/>
+            </div>
+            <div id="player-progress-bar-container">
+                <progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
+                <progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
+            </div>
+            <div id="player-middle">
+                <div id="time-container">
+                <span class="amplitude-current-time time-container"></span>
+                <span class="amplitude-duration-time time-container"></span>
+                </div>
+                <div id="meta-container">
+                <span data-amplitude-song-info="name" class="song-name"></span>
+                <div class="song-artist-album">
+                    <span data-amplitude-song-info="artist"></span>
+                </div>
+                </div>
+            </div>
+            <div id="player-bottom">
+                <div id="control-container">
+                <div id="shuffle-container"><div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div></div>
+                <div id="prev-container"><div class="amplitude-prev" id="previous"></div></div>
+                <div id="play-pause-container"><div class="amplitude-play-pause" id="play-pause"></div></div>
+                <div id="next-container"><div class="amplitude-next" id="next"></div></div>
+                <div id="repeat-container"><div class="amplitude-repeat" id="repeat"></div></div>
+                </div>
+                <div id="volume-container">
+                <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/volume.svg"/><input type="range" class="amplitude-volume-slider" step=".1"/>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+      <div id="content"></div>
+      <div id="pdf" class="hidden"></div>
+      <div id="hash" class="hidden"></div>
+      <div id="podcasts" class="hidden">
+        <p>Oups it's seems there is no podcast for now</p>
+      </div>
+    </div>
+
+    <script src="./config.js" ></script>
+    <script src="./dist/main.js" ></script>
+  </body>
+</html>
+
+
